@@ -7,9 +7,6 @@ on:
 jobs:
   login:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: udagram-frontend
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -23,6 +20,7 @@ jobs:
       - name: Build and push front-end
         uses: docker/build-push-action@v4
         with:
+          context: "{{defaultContext}}:udagram-frontend"
           push: true
           tags: locnt210920/udagram-frontend:v1
 
