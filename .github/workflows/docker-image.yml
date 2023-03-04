@@ -20,8 +20,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
-      - name: move out
-        run: cd ..
       - name: Build and push front-end
         uses: docker/build-push-action@v4
         with:
