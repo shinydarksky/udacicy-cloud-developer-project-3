@@ -27,7 +27,7 @@ jobs:
         with:
           context: udagram-frontend
           push: true
-          tag: locnt210920/udagram-frontend
+          tags: locnt210920/udagram-frontend
 
 
         
