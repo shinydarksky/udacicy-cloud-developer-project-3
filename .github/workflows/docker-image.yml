@@ -15,8 +15,8 @@ jobs:
     steps:
       # - name: Set up QEMU
       #   uses: docker/setup-qemu-action@v2
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+      # - name: Set up Docker Buildx
+      #   uses: docker/setup-buildx-action@v2
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
@@ -24,13 +24,13 @@ jobs:
           password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
       - name: test
         run: tree
-      # - name: Build and push front-end
-      #   uses: docker/build-push-action@v4
-      #   with:
-      #     context: udagram-frontend
-      #     file: Dockerfile
-      #     push: true
-      #     tags: locnt210920/udagram-frontend
+      - name: Build and push front-end
+        uses: docker/build-push-action@v4
+        with:
+          context: udagram-frontend
+          file: Dockerfile
+          push: true
+          tags: locnt210920/udagram-frontend
 
 
         
