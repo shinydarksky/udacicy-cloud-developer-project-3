@@ -1,4 +1,4 @@
-name: simple-node
+name: udagram-frontend
 on:
   push:
     branches: [ main ]
@@ -8,8 +8,8 @@ jobs:
   login:
     runs-on: ubuntu-latest
     defaults:
-    run:
-      working-directory: udagram-frontend
+      run:
+        working-directory: udagram-frontend
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
