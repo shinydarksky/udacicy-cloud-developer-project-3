@@ -6,9 +6,9 @@
 name: simple-node
 on:
   push:
-    branches: [ udagram-frontend ]
+    branches: [ main ]
   pull_request:
-    branches: [ udagram-frontend ]
+    branches: [ main ]
 jobs:
   login:
     runs-on: ubuntu-latest
