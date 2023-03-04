@@ -1,21 +1,15 @@
-name: CI udagram
+name: CI Frond-End
 on:
   push:
     branches: [ main ]
+    paths:
+      - udagram-frontend/**
   pull_request:
     branches: [ main ]
 jobs:
   udagram-frontend:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: udagram-frontend
     steps:
-      - uses: actions/checkout@v1
-      - name: Install dependencies
-        run: pub get
-      - name: Run tests
-        run: pub run test
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
