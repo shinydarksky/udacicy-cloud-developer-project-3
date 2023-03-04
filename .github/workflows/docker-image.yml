@@ -25,7 +25,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
       - name: Move to udagram-frontend
-        run : ls udagram-frontend
+        run : ls 
       - name: Build and push front-end
         uses: docker/build-push-action@v4
         with:
