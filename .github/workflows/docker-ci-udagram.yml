@@ -1,4 +1,4 @@
-name: udagram-api-feed
+name: CI udagram
 on:
   push:
     branches: [ main ]
@@ -68,11 +68,11 @@ jobs:
           context: "{{defaultContext}}:udagram-api-feed"
           push: true
           tags: locnt210920/udagram-api-feed:v1
-  udagram-frontend:
+  udagram-api-user:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: udagram-frontend
+        working-directory: udagram-api-user
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -86,9 +86,9 @@ jobs:
       - name: Build and push front-end
         uses: docker/build-push-action@v4
         with:
-          context: "{{defaultContext}}:udagram-frontend"
+          context: "{{defaultContext}}:udagram-api-user"
           push: true
-          tags: locnt210920/udagram-frontend:v1
+          tags: locnt210920/udagram-api-user:v1
 
 
         
