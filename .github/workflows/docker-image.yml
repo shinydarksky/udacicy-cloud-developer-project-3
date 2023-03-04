@@ -24,11 +24,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
-      - name: Build and push
-        uses: docker/build-push-action@v4
-      - name: Remove unused and dangling images
-        run : docker image prune --all
-      - name: Build docker compose
-        run: docker-compose -f docker-compose-build.yaml build --parallel
-      - name: Run docker compose
-        run: docker-compose up
+      # - name: Build and push
+      #   uses: docker/build-push-action@v4
+        
