@@ -7,9 +7,9 @@ name: simple-node
 
 on:
   push:
-    branches: [ main ]
+    branches: [ udagram-frontend ]
   pull_request:
-    branches: [ main ]
+    branches: [ udagram-frontend ]
 
 jobs:
   login:
@@ -24,14 +24,16 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
-      
-      with:
-      compose-file: "./docker/docker-compose.yml"
-      down-flags: "--volumes"
-      services: |
-        udagram-frontend
-        reverseproxy
-        udagram-api-user
-        udagram-api-feed
+      - name: Build and push front-end
+        uses: docker/build-push-action@v4
+        with:
+          with:
+          compose-file: "./docker-compose.yml"
+          down-flags: "--volumes"
+          services: |
+            udagram-frontend
+            reverseproxy
+            udagram-api-user
+            udagram-api-feed
 
         
