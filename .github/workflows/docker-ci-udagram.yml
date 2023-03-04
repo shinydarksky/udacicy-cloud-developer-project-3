@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Install dependencies
         run: pub get
-        working-directory: dart_project
+        working-directory: udagram-frontend
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
