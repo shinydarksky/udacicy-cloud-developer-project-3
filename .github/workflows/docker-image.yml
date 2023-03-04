@@ -4,13 +4,14 @@
 # documentation.
 
 name: simple-node
-
 on:
   push:
     branches: [ udagram-frontend ]
   pull_request:
     branches: [ udagram-frontend ]
-
+defaults:
+  run:
+    working-directory: ./udagram-frontend
 jobs:
   login:
     runs-on: ubuntu-latest
@@ -28,7 +29,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          context: udagram-frontend
           tags: locnt210920/udagram-frontend:v1
 
         
