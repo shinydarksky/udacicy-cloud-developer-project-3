@@ -1,13 +1,13 @@
-name: CI Frond-End
+name: udagram-api-feed
 on:
   push:
     branches: [ main ]
     paths:
-      - udagram-frontend/**
+      - udagram-api-feed/**
   pull_request:
     branches: [ main ]
 jobs:
-  udagram-frontend:
+  udagram-api-feed:
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -22,8 +22,8 @@ jobs:
       - name: Build and push front-end
         uses: docker/build-push-action@v4
         with:
-          context: "{{defaultContext}}:udagram-frontend"
+          context: "{{defaultContext}}:udagram-api-feed"
           push: true
-          tags: locnt210920/udagram-frontend:v1
+          tags: locnt210920/udagram-api-feed:v1
 
         
