@@ -24,13 +24,13 @@ jobs:
           password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
       - name: test
         run: ls
-      - name: Build and push front-end
-        uses: docker/build-push-action@v4
-        with:
-          context: udagram-frontend
-          file: Dockerfile
-          push: true
-          tags: locnt210920/udagram-frontend
+      # - name: Build and push front-end
+      #   uses: docker/build-push-action@v4
+      #   with:
+      #     context: udagram-frontend
+      #     file: Dockerfile
+      #     push: true
+      #     tags: locnt210920/udagram-frontend
 
 
         
