@@ -24,8 +24,10 @@ jobs:
           password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
       - name: Build and push front-end
         uses: docker/build-push-action@v4
-        working-directory: udagram-frontend
+        working-directory: udagram-frontend/
         with:
+          context: .
+          file: ./Dockerfile
           push: true
           tags: locnt210920/udagram-frontend:v1
 
