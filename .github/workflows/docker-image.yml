@@ -24,10 +24,11 @@ jobs:
           password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
       - name: Build and push front-end
         uses: docker/build-push-action@v4
-        with: 
-          context: ./udagram-frontend/
-          file: ./udagram-frontend/Dockerfile
-          push: true
-          tags: locnt210920/udagram-frontend:v1
+      - uses: isbang/compose-action@v1.4.1
+        with:
+          compose-file: "./docker/docker-compose.yml"
+          down-flags: "--volumes"
+          services: |
+            udagram-frontend
 
         
