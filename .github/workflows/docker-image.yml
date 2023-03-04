@@ -25,8 +25,8 @@ jobs:
       - name: Build and push front-end
         uses: docker/build-push-action@v4
         with:
-          context: .
-          file: ./udagram-frontend/Dockerfile
+          context: udagram-frontend
+          file: Dockerfile
           push: true
           tags: locnt210920/udagram-frontend
 
