@@ -19,7 +19,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
-      - name: Build and push front-end
+      - name: Build and push reverseproxy
         uses: docker/build-push-action@v4
         with:
           context: "{{defaultContext}}:udagram-reverseproxy"
