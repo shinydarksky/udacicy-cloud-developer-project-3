@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-feed
+spec:
+  selector:
+    matchLabels:
+      app: backend-feed
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: backend-feed
+    spec:
+      containers:
+        - name: backend-feed
+          image: locnt210920/udagram-api-feed:v1
+          env:      
+            - name: POSTGRES_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: dotfile-secret
+                  key: POSTGRES_USERNAME
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: dotfile-secret
+                  key: POSTGRES_PASSWORD
+            - name: POSTGRES_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: dotfile-secret
+                  key: POSTGRES_HOST
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: dotfile-secret
+                  key: POSTGRES_DB
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: dotfile-secret
+                  key: JWT_SECRET
+            - name: AWS_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  name: env-config
+                  key: AWS_BUCKET
+            - name: AWS_REGION
+              valueFrom:
+                configMapKeyRef:
+                  name: env-config
+                  key: AWS_REGION
+            - name: AWS_PROFILE
+              valueFrom:
+                configMapKeyRef:
+                  name: env-config
+                  key: AWS_PROFILE
+            - name: URL
+              valueFrom:
+                configMapKeyRef:
+                  name: env-config
+                  key: URL
+          volumeMounts:
+          - name: aws-secret
+            mountPath: "/root/.aws"
+            readOnly: true
+      volumes:
+      - name: aws-secret
+        secret:
+          secretName: aws-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-feed
+spec:
+  selector:
+    app: backend-feed
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

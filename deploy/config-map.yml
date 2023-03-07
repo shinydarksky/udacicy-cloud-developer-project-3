@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  AWS_BUCKET: locnt28-532101884132-dev
+  AWS_REGION: us-east-1
+  AWS_PROFILE: default
+  URL: http://localhost:8100
+metadata:
+  name: env-config

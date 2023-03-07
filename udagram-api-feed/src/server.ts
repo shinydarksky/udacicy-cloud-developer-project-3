@@ -13,7 +13,6 @@ import {V0_FEED_MODELS} from './controllers/v0/model.index';
   await sequelize.addModels(V0_FEED_MODELS);
   
   console.debug("Initialize database connection...");
-  console.log(config);
   
   await sequelize.sync();
 
