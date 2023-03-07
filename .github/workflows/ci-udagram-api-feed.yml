@@ -24,6 +24,6 @@ jobs:
         with:
           context: "{{defaultContext}}:udagram-api-feed"
           push: true
-          tags: locnt210920/udagram-api-feed:v1
+          tags: locnt210920/udagram-api-feed:v2
 
         
